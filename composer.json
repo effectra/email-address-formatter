@@ -1,0 +1,26 @@
+{
+    "name": "effectra/email-address-formatter",
+    "description": "The Effectra Email Address Formatter package.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Effectra\\EmailAddressFormatter": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mohammed Taha [BMT]",
+            "email": "info@mohammedtaha.net"
+        }
+    ],
+    "require": {
+    },
+    "minimum-stability": "stable",
+    "require-dev": {
+    },
+    "config": {
+        "allow-plugins": {
+        }
+    }
+}
