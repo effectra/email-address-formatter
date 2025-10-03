@@ -76,18 +76,24 @@ class Address implements AddressInterface
     /**
      * Validate if an address is valid.
      *
-     * @param string $email The email address to validate.
+     * Supports formats:
+     * - john@example.com
+     * - John Doe <john@example.com>
+     *
+     * @param string $address
      * @return bool
      */
     public static function addressValidation(string $address): bool
     {
-        if (preg_match('/^(?:[^<]+<[^>]+>|', $address, $matches)) {
-            if (static::emailValidation($matches[2])) {
-                return true;
-            }
+        if (preg_match('/<([^>]+)>/', $address, $matches)) {
+            $email = $matches[1];
+        } else {
+            $email = $address;
         }
-        return false;
+
+        return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
     }
+
 
     /**
      * Validate if an email address is valid.
@@ -97,10 +103,8 @@ class Address implements AddressInterface
      */
     public static function emailValidation(string $email): bool
     {
-        if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-            return false;
-        }
-        return true;
+        return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
+
     }
 
     /**
